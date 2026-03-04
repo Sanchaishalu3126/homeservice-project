@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🏠 HomeService</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/history">My Bookings</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <h2 class="booking-title">Available Servicers</h2>
+
+    <div style="width:80%; margin:auto;">
+        {% for servicer in servicers %}
+        <div class="form-container">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png" width="100" style="margin-bottom:10px;">
+
+            <p><strong>Name:</strong> {{ servicer[1] }}</p>
+            <p><strong>Service:</strong> {{ servicer[2] }}</p>
+
+            <form method="POST">
+                <input type="hidden" name="servicer_id" value="{{ servicer[0] }}">
+                <input type="date" name="date" required>
+                <button type="submit">Book Service</button>
+            </form>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Servicer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Register as Servicer</h2>
+
+        <form method="POST">
+            <select name="service" required>
+            <option value="">Select Service</option>
+            <option value="Electrician">Electrician</option>
+            <option value="Plumber">Plumber</option>
+            <option value="Cleaner">Cleaner</option>
+            <option value="Painter">Painter</option>
+        </select>
+
+            <input type="text" name="proof" placeholder="Enter Government Proof ID" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <br><br>
+
+    <h2 style="text-align:center;">Customer Requests Overview</h2>
+
+    <div style="width:80%; margin:auto;">
+        {% for servicer in servicers %}
+        <div class="form-container">
+            <p><strong>Name:</strong> {{ servicer[1] }}</p>
+            <p><strong>Service:</strong> {{ servicer[2] }}</p>
+            <p><strong>Proof:</strong> {{ servicer[3] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Select Role</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h2>Select Your Role</h2>
+
+        <form method="POST">
+            <select name="role" required>
+            <option value="">Choose Role</option>
+            <option value="customer">Customer</option>
+            <option value="servicer">Servicer</option>
+        </select>
+
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

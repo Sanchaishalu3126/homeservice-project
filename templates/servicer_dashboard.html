@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Servicer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">HomeService</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+
+        {% if not servicer %}
+        <h2>Register as Servicer</h2>
+
+        <form method="POST">
+            <select name="service" required>
+                <option value="">Select Service</option>
+                <option value="Electrician">Electrician</option>
+                <option value="Plumber">Plumber</option>
+                <option value="Cleaner">Cleaner</option>
+                <option value="Painter">Painter</option>
+            </select>
+            <input type="text" name="proof" placeholder="Proof(PAN OR Aadhar)" required>
+
+            <input type="text" name="proof" placeholder="Enter Government Proof ID" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% else %}
+        <h2>Welcome Servicer</h2>
+        <p><strong>Your Service:</strong> {{ servicer[2] }}</p>
+        <p><strong>Government Proof:</strong> {{ servicer[3] }}</p>
+
+        <br>
+        <h3>Total Customer Bookings: {{ booking_count }}</h3>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
